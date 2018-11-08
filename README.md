@@ -11,7 +11,5 @@
 |    **Item**                                                                | **Status** |
   |----------------------------------------------------------------------------|------------|
   | *Complete 2/6 of the provided tasks:* | :thumbsup: |
-  | *Write some data to file and load it back into R*           | :thumbsup: |
-  | *Improve a figure (or make one from scratch), using new knowledge, e.g., control the color scheme, use factor levels, smoother mechanics.*     | :thumbsup: |
-  |   *Make a plotly visual*    | :thumbsup: |
-  |   *Implement visualization design principles*     | :thumbsup: |
+  | *#2 - Writing functions*           | :thumbsup: |
+  | *#6 - Work with a nested data frame*     | :thumbsup: |
