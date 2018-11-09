@@ -17,14 +17,24 @@ suppressPackageStartupMessages(library(stringr))
 
 ## Question 1 - Character Data
 
-### Method
-* Drop Oceania by filtering the data to remove observations
-* Remove unused factor levels
-* Provide concrete information on the data before/after the manipulation
-* Re-order the levels of continent
+### String Basics
 
-### Code
-First, we
+* Strings are characters encapsulated inside brackets; they can use double or single brackets
+* A backslash can be used to 'escape' the string, if it's desired to use literal quotes
+
+*Example:*
+
+```{r}
+string1 <- "This is a sample string!"
+string1
+string2 <- 'If I want to include a "quote" inside a string, I use single quotes'
+string2
+string3 <- 'Now this string contains a \"quote!\"'
+string3
+```
+
+* 
+
 
 <!-- 2. Writing functions -->
 <!-- Pick one: -->
