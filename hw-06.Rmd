@@ -1,15 +1,11 @@
 ---
 title: "hw-06 data wrangling wrap up"
 output:
-   github_document
+   github_document:
+      toc: true
+
 always_allow_html: yes
 ---
-
-## Table of contents
-
--   [Question 1: Character Data](#question-1-character-data)
--   [Question 2: Writing Functions](#part-2-writing-functions)
-
 ## Question 1 - Character Data
 Exercises from **Strings** chapter in **R for Data Science**.
 
@@ -509,5 +505,5 @@ From the plot, we see that Zimbabwe's life expectancy peaked around the year 198
 
 https://stats.stackexchange.com/questions/13702/what-is-the-difference-between-lm-and-rlm
 
-http://stat545.com/block012_function-regress-lifeexp-on-year.html
+https://stackoverflow.com/questions/23957278/how-to-add-table-of-contents-in-rmarkdown/23963277 
 
