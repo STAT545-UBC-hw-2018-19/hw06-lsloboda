@@ -8,6 +8,6 @@
 
 |    **Item**                                     | **Status** |
   |-------------------------------------------------|------------|
-  | *Complete 2/6 of the provided tasks:* | :thumbsup: |
+  | *Complete 2/6 of the provided tasks:*  |
   | *#1 - Stringr exercises*           | :thumbsup: |
   | *#2 - Writing a function*     | :thumbsup: |
