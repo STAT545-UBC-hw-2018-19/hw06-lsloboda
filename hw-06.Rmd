@@ -110,7 +110,7 @@ str_view(c("$^$", "ab$^$sfas"), "^\\$\\^\\$$")
 
 * Start with “y”
 ```{r}
-    str_view(stringr::words, "^y", match =TRUE) %>% head()
+    #str_view(stringr::words, "^y", match =TRUE) %>% head()
     ```
 
 * End with “x”
@@ -120,12 +120,12 @@ str_view(c("$^$", "ab$^$sfas"), "^\\$\\^\\$$")
 
 * Are exactly three letters long.
 ```{r}
-    str_view(stringr::words, "^...$", match = TRUE) %>% head()
+    #str_view(stringr::words, "^...$", match = TRUE) %>% head()
     ```
 
 * Have seven letters or more.
 ```{r}
-    str_view(stringr::words, ".......", match = TRUE) %>% head()
+    #str_view(stringr::words, ".......", match = TRUE) %>% head()
     ```
 
 
@@ -135,22 +135,22 @@ str_view(c("$^$", "ab$^$sfas"), "^\\$\\^\\$$")
 
 * Start with a vowel
 ```{r}
-    str_view(stringr::words, "^[aeiou]", match = TRUE) %>% head()
+   # str_view(stringr::words, "^[aeiou]", match = TRUE) %>% head()
     ```
     
 * That only contain consonants. (Hint: thinking about matching “not”-vowels.)
 ```{r}
-    str_view(stringr::words, "^[^aeiou]+$", match=TRUE) %>% head()
+   # str_view(stringr::words, "^[^aeiou]+$", match=TRUE) %>% head()
     ```
     
 * End with ed, but not with eed.
 ```{r}
-    str_view(stringr::words, "^ed$|[^e]ed$", match = TRUE) %>% head()
+   # str_view(stringr::words, "^ed$|[^e]ed$", match = TRUE) %>% head()
     ```
     
 * End with ing or ise.
 ```{r}
-    str_view(stringr::words, "i(ng|se)$", match = TRUE) %>% head()
+   # str_view(stringr::words, "i(ng|se)$", match = TRUE) %>% head()
     ```
 
 
