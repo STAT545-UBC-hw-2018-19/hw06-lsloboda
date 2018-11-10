@@ -439,39 +439,75 @@ str_extract_all(sentences, boundary("word")) %>%
 
 ## Question 2 - Write a function
 
-Write one (or more) functions that do something useful to pieces of the Gapminder or Singer data. It is logical to think about computing on the mini-data frames corresponding to the data for each specific country, location, year, band, album, … This would pair well with the prompt below about working with a nested data frame, as you could apply your function there.
- You could generalize that to do quadratic regression (include a squared term) or use robust regression, using MASS::rlm() or robustbase::lmrob()
-
 ### Initialize
 
 * Load the required libraries:
 
 ```{r}
 suppressPackageStartupMessages(library(tidyverse))
-suppressPackageStartupMessages(library(stringr))
-suppressPackageStartupMessages(library(stringi))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(ggplot2))
+suppressPackageStartupMessages(library(MASS))
 ```
 
 ### Method
 
-* bla
+1. Linear regression
+* Use the linear regression given [here](http://stat545.com/block012_function-regress-lifeexp-on-year.html) as a starting point
+* Plot the function; fit the linear regression function; manually adjust, if needed
+
+2. Quadratic regression
+* Generalize to a quadratic regression using `MASS::rlm()`
+* Plot the function; fit the linear regression function; manually adjust, if needed
 
 ### Code
 
+Linear regression:
+
 ```{r}
-#sub_dat <- gapminder %>% 
- # filter(continent %in% c("Europe", "Asia")) %>% 
-  #filter(year %in% c(2007, 2002))
-#head(sub_dat)
+j_country <- "Germany"
+(j_dat <- gapminder %>% 
+  filter(country == j_country))
 
+le_lin_fit <- function(dat, offset = 1952) {
+  the_fit <- lm(lifeExp ~ I(year - offset), dat)
+  setNames(coef(the_fit), c("intercept", "slope"))
+}
 
-#make_plot <- function(dat){
- # plt = ggplot(dat, aes(continent, gdpPercap, fill = continent)) + geom_boxplot() + facet_wrap(~year)
-  #return(plt)
-#}
-#make_plot(sub_dat)
+le_lin_fit(j_dat)
+
+p <- ggplot(j_dat, aes(x = year, y = lifeExp))
+p + geom_point() + stat_smooth(method = "lm") + ggtitle("Linear regression of Germany's life expectancy") + theme_bw()
+
+rm(list = ls()) #clear workspace
 ```
 
+We observe that the linear regression model is appropriate to the change in life expectancy over time in Germany. The y-int is ~66 years, which makes sense as a sanity check. We see relatively little variation between the data points and the trend line. 
 
+Next we will explore an example which doesn't suit a linear regression model, and requires a quadratic model instead. We will apply `rlm` from the MASS package and plot the results.
 
+```{r}
+j_country <- "Zimbabwe"
+(j_dat <- gapminder %>% filter(country == j_country))
+
+le_quad_fit <- function(dat, offset = 1952) {
+  the_fit <- rlm(lifeExp ~ I(year - offset), dat)
+  setNames(coef(the_fit), c("intercept", "slope"))
+}
+
+le_quad_fit(j_dat)
+
+p <- ggplot(j_dat, aes(x = year, y = lifeExp))
+p + geom_point() + stat_smooth(method = "rlm", formula = y ~ x + I(x^2)) + ggtitle("Quadratic regression of Zimbabwe's life expectancy") + theme_bw()
+
+rm(list = ls()) #clear workspace
+```
+
+From the plot, we see that Zimbabwe's life expectancy peaked around the year 1988 at 60 years old. The use of a quadratic model is clearly more appropriate for the data in this scenario. The use of `rlm` creates a robust linear model, although I did not notice a difference in the plot when using `lm()` versus `rlm()`. The error on the model is quite large, although it does encompass most of the data points.
+
+## Resources
+
+https://stats.stackexchange.com/questions/13702/what-is-the-difference-between-lm-and-rlm
+
+http://stat545.com/block012_function-regress-lifeexp-on-year.html
 
