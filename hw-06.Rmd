@@ -115,7 +115,7 @@ str_view(c("$^$", "ab$^$sfas"), "^\\$\\^\\$$")
 
 * End with “x”
 ```{r}
-    str_view(stringr::words, "x$", match = TRUE) %>% head()
+   # str_view(stringr::words, "x$", match = TRUE) %>% head()
     ```
 
 * Are exactly three letters long.
@@ -157,10 +157,10 @@ str_view(c("$^$", "ab$^$sfas"), "^\\$\\^\\$$")
 **2. Empirically verify the rule “i before e except after c”.**
 
 ```{r}
-str_view(stringr::words, "(cei|[^c]ie)", match = TRUE) %>% head()
-str_view(stringr::words, "(cie|[^c]ei)", match = TRUE) %>% head()
-sum(str_detect(stringr::words, "(cei|[^c]ie)")) #count the number of words in each case
-sum(str_detect(stringr::words, "(cie|[^c]ei)"))
+#str_view(stringr::words, "(cei|[^c]ie)", match = TRUE) %>% head()
+#str_view(stringr::words, "(cie|[^c]ei)", match = TRUE) %>% head()
+#sum(str_detect(stringr::words, "(cei|[^c]ie)")) #count the number of words in each case
+#sum(str_detect(stringr::words, "(cie|[^c]ei)"))
 
 ```
 
@@ -169,7 +169,7 @@ sum(str_detect(stringr::words, "(cie|[^c]ei)"))
 Yes, in the given database.
 
 ```{r}
-str_view(stringr::words, "q[^u]", match = TRUE) %>% head()
+#str_view(stringr::words, "q[^u]", match = TRUE) %>% head()
 ```
 
 **4. Write a regular expression that matches a word if it’s probably written in British English, not American English.**
@@ -213,17 +213,17 @@ Will match four backslashes
 
 * Start with three consonants.
 ```{r}
-    str_view(words, "^[^aeiou]{3}") %>% head()
+    #str_view(words, "^[^aeiou]{3}") %>% head()
     ```
     
 * Have three or more vowels in a row.
 ```{r}
-    str_view(words, "[aeiou]{3,}") %>% head()
+    #str_view(words, "[aeiou]{3,}") %>% head()
     ```
     
 * Have two or more vowel-consonant pairs in a row.
 ```{r}
-    str_view(words, "([aeiou][^aeiou]){2,}") %>% head()
+    #str_view(words, "([aeiou][^aeiou]){2,}") %>% head()
     ```
 
 ### 14.3.5.1 Matching Patterns with Regex - Grouping and backreferences
@@ -248,17 +248,17 @@ Three characters followed by zero or more characters of any kind followed by the
 
 * Start and end with the same character.
 ```{r}
-    str_view(stringr::words, "^(.)((.*\\1$)|\\1?$)", match = TRUE) %>% head()
+    #str_view(stringr::words, "^(.)((.*\\1$)|\\1?$)", match = TRUE) %>% head()
     ```
     
 * Contain a repeated pair of letters (e.g. “church” contains “ch” repeated twice.)
 ```{r}
-    str_view(words, "(..).*\\1") %>% head()
+    #str_view(words, "(..).*\\1") %>% head()
     ```
     
 * Contain one letter repeated in at least three places (e.g. “eleven” contains three “e”s.)
 ```{r}
-    str_subset(str_to_lower(words), "([a-z]).*\\1.*\\1") %>% head()
+    #str_subset(str_to_lower(words), "([a-z]).*\\1.*\\1") %>% head()
     ```
 
 ### 14.4.2 Tools
@@ -267,18 +267,18 @@ Three characters followed by zero or more characters of any kind followed by the
 
 * Find all words that start or end with x:
 ```{r}
-    words[str_detect(words, "^x|x$")]
-    start_with_x <- str_detect(words, "^x")
-    end_with_x <- str_detect(words, "x$")
-    words[start_with_x | end_with_x]
+    #words[str_detect(words, "^x|x$")]
+    #start_with_x <- str_detect(words, "^x")
+    #end_with_x <- str_detect(words, "x$")
+    #words[start_with_x | end_with_x]
     ```
 
 * Find all words that start with a vowel and end with a consonant:
 ```{r}
-    str_subset(words, "^[aeiou].*[^aeiou]$") %>% head()
-    start_with_vowel <- str_detect(words, "^[aeiou]")
-    end_with_consonant <- str_detect(words, "[^aeiou]$")
-    words[start_with_vowel & end_with_consonant] %>% head()
+    #str_subset(words, "^[aeiou].*[^aeiou]$") %>% head()
+    #start_with_vowel <- str_detect(words, "^[aeiou]")
+    #end_with_consonant <- str_detect(words, "[^aeiou]$")
+    #words[start_with_vowel & end_with_consonant] %>% head()
     ```
 
 * Are there any words that contain at least one of each different vowel?
